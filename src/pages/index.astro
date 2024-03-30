@@ -1,0 +1,14 @@
+---
+import Base from "@layouts/base.astro"
+import Forest from "@components/forest.tsx"
+
+const title = "sanctuawee"
+
+---
+
+<Base title={title}>
+<div>
+    <h1 class="text-xl font-bold">{title}</h1>
+    <Forest client:load />
+</div>
+</Base>
