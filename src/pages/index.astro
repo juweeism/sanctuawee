@@ -1,14 +1,24 @@
 ---
 import Base from "@layouts/base.astro"
 import Forest from "@components/forest.tsx"
+import Tags from "@components/tags.tsx"
+import { getCollection } from 'astro:content';
 
 const title = "sanctuawee"
 
+const notes = await getCollection('notes')
+const tags = [...new Set(notes.map((note) => note.data.tags).flat())]
 ---
 
 <Base title={title}>
 <div>
-    <h1 class="text-xl font-bold">{title}</h1>
+    <h1 class="text-xl font-bold max-w-[600px] m-auto">{title}</h1>
     <Forest client:load />
+    <div class="max-w-[600px] m-auto">
+        <p>you are here, in my digital sanctuary aka a guilt-free place where i can publish my study notes and
+            let my
+            unoriginal ideas roam free.</p>
+        <Tags tags={tags} notes={notes} client:load />
+    </div>
 </div>
 </Base>
