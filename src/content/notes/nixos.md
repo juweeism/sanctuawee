@@ -4,6 +4,4 @@ tags:
 - software
 ---
 
-NixOS is my favorite linux distro. i've been using it as a daily driver since February 2024. 
-
-### everything i know about nixos
+dummy post. sorry still testing. will work on this on my free time. stay tuned. 
