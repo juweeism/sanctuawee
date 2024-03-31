@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react"
+import type { CollectionEntry } from 'astro:content';
+import type { string } from "astro/zod";
 
-const Tags = ({ tags, notes }) => {
+interface Props {
+    tags: string[]
+    notes: CollectionEntry<'notes'>[]
+}
+
+const Tags = ({ tags, notes }: Props) => {
 
     const tagList = ['all', ...tags]
     const [selectedTags, setSelectedTags] = useState<string[]>([])
@@ -8,7 +15,7 @@ const Tags = ({ tags, notes }) => {
 
     useEffect(() => {
         // setFilteredNotes(notes.filter(note => selectedTags.includes(note.data.tags)))
-        setFilteredNotes(selectedTags.length === 0 ? notes : notes.filter(note => note.data.tags.some(n => selectedTags.includes(n))))
+        setFilteredNotes(selectedTags.length === 0 ? notes : notes.filter((note: CollectionEntry<'notes'>) => note.data.tags.some((n: string) => selectedTags.includes(n))))
     }, [selectedTags])
 
     const handleClick = (tag: string) => {
@@ -40,7 +47,7 @@ const Tags = ({ tags, notes }) => {
 
                 <p> notes</p>
                 {
-                    filteredNotes.map((note, i) => (
+                    filteredNotes.map((note: CollectionEntry<'notes'>, i: number) => (
                         <li key={i}><a href={'notes/' + note.slug}>{note.data.title}</a></li>
                     ))
                 }
