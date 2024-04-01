@@ -9,7 +9,7 @@ body {
 #wrapper {
     margin: 0 auto;
     padding: 1.5rem 1rem;
-    max-width: 750px;
+    max-width: 999px;
 }
 
 h1 {
@@ -27,6 +27,6 @@ h3 {
 }
 
 p {
-    margin: 1rem auto;
+    margin: 0.6rem auto;
     max-width: 600px;
 }

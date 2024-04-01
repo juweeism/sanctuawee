@@ -18,9 +18,8 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
 
 const lastModified = dayjs(remarkPluginFrontmatter.lastModified).utc().format("DD MMMM YYYY");
 ---
-<Base>
+<Base title="sanctuawee">
 <a href="/#">
-    <h1 class="text-xl font-bold max-w-[600px] m-auto">sanctuawee</h1>
 </a>
 <h1>{entry.data.title}</h1>
 <p>last updated {lastModified}</p>

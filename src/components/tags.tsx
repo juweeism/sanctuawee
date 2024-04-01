@@ -28,30 +28,47 @@ const Tags = ({ tags, notes }: Props) => {
         }
     }
 
+    const Label = ({ label }: { label: string }) => {
+        return (
+            <p className="text-slate-400 font-bold text-sm mt-9">{label}</p>
+        )
+    }
+
+    const TagList = ({ tags }: { tags: string[] }) => {
+        return (
+            <ul className="flex flex-wrap gap-3 cursor-pointer select-none mt-2 mb-5 text-sm">
+                {
+                    tags.map((tag, i) => (
+                        selectedTags.length === 0 && tag === 'all' ?
+                            <li className="border px-3 border-emerald-400 text-emerald-400 min-w-max" key={i} onClick={() => handleClick(tag)}>{tag}</li> :
+                            selectedTags.includes(tag) ?
+                                <li className="border px-3 border-emerald-400 text-emerald-400 min-w-max" key={i} onClick={() => handleClick(tag)}>{tag}</li> :
+                                <li className="border px-3 text-slate-600 min-w-max" key={i} onClick={() => handleClick(tag)}>{tag}</li>
+                    ))
+                }
+            </ul>
+        )
+    }
+
+    const NoteList = ({ notes }: { notes: CollectionEntry<'notes'>[] }) => {
+        return (
+            <ul className="mt-1 mb-5">
+                {
+                    notes.map((note: CollectionEntry<'notes'>, i: number) => (
+                        <li key={i} className="list-['🗒️'] pl-3 ml-5"><a className="underline" href={'notes/' + note.slug}> {note.data.title}</a> {note.data.tags.map(t => <span className="text-slate-400 text-sm"> #{t}</span>)}</li>
+                    ))
+                }
+            </ul>
+        )
+    }
+
     return (
         <>
-            <ul className="my-6 flex gap-3 cursor-pointer select-none">
-                <span>tags: </span>
-                {
-                    tagList.map((tag, i) => (
-                        selectedTags.length === 0 && tag === 'all' ?
-                            <li className="border px-3 bg-black text-white items-center" key={i} onClick={() => handleClick(tag)}>{tag}</li> :
-                            selectedTags.includes(tag) ?
-                                <li className="border px-3 bg-black text-white items-center" key={i} onClick={() => handleClick(tag)}>{tag}</li> :
-                                <li className="border px-3 items-center" key={i} onClick={() => handleClick(tag)}>{tag}</li>
-                    ))
-                }
+            <Label label="TAGS" />
+            <TagList tags={tagList} />
 
-            </ul>
-            <ul>
-
-                <p> notes</p>
-                {
-                    filteredNotes.map((note: CollectionEntry<'notes'>, i: number) => (
-                        <li key={i}><a href={'notes/' + note.slug}>{note.data.title}</a></li>
-                    ))
-                }
-            </ul>
+            <Label label="NOTES" />
+            <NoteList notes={filteredNotes} />
         </>
     )
 }

@@ -61,12 +61,12 @@ function Forest() {
 
     return (
         <div className="my-9 cursor-pointer select-none" onClick={() => genRandomForest()}>
-            <div className="grid grid-cols-12 gap-y-3 text-white">
+            <div className="grid grid-cols-12 text-white">
                 {forest.split('').map((f: String, i) => (
                     <p key={i}>{numToForest(f)}</p>
                 ))}
             </div>
-            <p className="italic text-center text-slate-300 m-3">[ click for random forest ]</p>
+            <p className="italic text-center text-slate-300">[ click for random forest ]</p>
         </div>
     )
 }
