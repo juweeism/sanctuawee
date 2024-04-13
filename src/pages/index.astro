@@ -4,7 +4,7 @@ import Forest from "@components/forest.tsx"
 import Tags from "@components/tags.tsx"
 import { getCollection } from 'astro:content';
 
-const title = "sanctuawee"
+const title = "random forest"
 
 const notes = await getCollection('notes')
 const tags = [...new Set(notes.map((note) => note.data.tags).flat())]
@@ -13,7 +13,7 @@ const tags = [...new Set(notes.map((note) => note.data.tags).flat())]
 <Base title={title}>
 <div>
     <Forest client:load />
-    <div class="max-w-[600px] m-auto">
+    <div>
         <p>you are here, in my digital sanctuary. some people might call it digital garden but it's just a guilt-free
             place where i can publish my study notes and
             let my

@@ -34,16 +34,20 @@ const Tags = ({ tags, notes }: Props) => {
         )
     }
 
+    const Tag = ({ tag, selected }: { tag: string, selected: boolean }) => {
+        return (
+            <li className={`px-3 italic border border-zinc-300 ${selected ? "font-bold bg-black text-white" : "font-normal"}`} onClick={() => handleClick(tag)}>
+                {tag}
+            </li>
+        )
+    }
+
     const TagList = ({ tags }: { tags: string[] }) => {
         return (
-            <ul className="flex flex-wrap gap-3 cursor-pointer select-none mt-2 mb-5 text-sm">
+            <ul className="flex flex-wrap gap-3 cursor-pointer select-none mt-2 mb-5">
                 {
-                    tags.map((tag, i) => (
-                        selectedTags.length === 0 && tag === 'all' ?
-                            <li className="border px-3 border-emerald-400 text-emerald-400 min-w-max" key={i} onClick={() => handleClick(tag)}>{tag}</li> :
-                            selectedTags.includes(tag) ?
-                                <li className="border px-3 border-emerald-400 text-emerald-400 min-w-max" key={i} onClick={() => handleClick(tag)}>{tag}</li> :
-                                <li className="border px-3 text-slate-600 min-w-max" key={i} onClick={() => handleClick(tag)}>{tag}</li>
+                    tags.map((tag: string, i: number) => (
+                        <Tag tag={tag} key={i} selected={(selectedTags.length === 0 && tag === 'all') || selectedTags.includes(tag)} />
                     ))
                 }
             </ul>
@@ -55,7 +59,7 @@ const Tags = ({ tags, notes }: Props) => {
             <ul className="mt-1 mb-5">
                 {
                     notes.map((note: CollectionEntry<'notes'>, i: number) => (
-                        <li key={i} className="list-['🗒️'] pl-3 ml-5"><a className="underline" href={'notes/' + note.slug}> {note.data.title}</a> {note.data.tags.map(t => <span className="text-slate-400 text-sm"> #{t}</span>)}</li>
+                        <li key={i} className="list-disc pl-3 ml-5"><a className="underline" href={'notes/' + note.slug}> {note.data.title}</a> {note.data.tags.map(t => <span className="text-slate-400 text-sm"> #{t}</span>)}</li>
                     ))
                 }
             </ul>

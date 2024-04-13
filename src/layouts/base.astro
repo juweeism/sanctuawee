@@ -9,14 +9,18 @@ const { title } = Astro.props
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu&family=IBM+Plex+Mono&family=Yomogi&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <div id="wrapper">
-        <a href="/#">
-            <h1 class="text-xl font-bold max-w-[600px] m-auto">{title} <span class="text-slate-400 font-normal">/
-                    juwee's
-                    notes</span></h1>
+        <a href="/#" class="flex flex-col justify-start">
+            <p class="font-['TT2020G'] text-6xl leading-none">{title}</p>
+            <p class="text-zinc-500 italic">/ juwee's notes</p>
         </a>
         <slot />
     </div>

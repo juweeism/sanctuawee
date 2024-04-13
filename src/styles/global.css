@@ -1,9 +1,41 @@
+@font-face {
+    font-family: 'TT2020';
+    src: url('/fonts/TT2020Base-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT2020';
+    src: url('/fonts/TT2020Base-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT2020G';
+    src: url('/fonts/TT2020StyleG-Regular-ASCII.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT2020';
+    src: url('/fonts/TT2020StyleE-Regular.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
 html,
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'TT2020', sans-serif;
 }
 
 #wrapper {
@@ -13,20 +45,7 @@ body {
 }
 
 h1 {
-    font-size: 2.1rem;
-    font-weight: bold;
     margin: 1rem auto;
     max-width: 600px;
-}
-
-h3 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 1rem auto;
-    max-width: 600px;
-}
-
-p {
-    margin: 0.6rem auto;
-    max-width: 600px;
+    font-family: 'TT2020G', sans-serif;
 }
